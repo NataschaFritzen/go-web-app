@@ -1,0 +1,21 @@
+# Arquivos compilados (se no futuro você usar `go build`)
+*.exe
+*.out
+*.test
+
+# Diretórios de build
+/bin/
+/build/
+/dist/
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de IDE
+.vscode/
+.idea/
