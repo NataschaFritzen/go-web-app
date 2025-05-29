@@ -26,15 +26,21 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 		preco := r.FormValue("preco")
 		quantidade := r.FormValue("quantidade")
 
-		precoConvertidoParaFloat, err := strconv.ParseFloat(preco,64)
+		precoConvertidoParaFloat, err := strconv.ParseFloat(preco, 64)
 		if err != nil {
 			log.Println("Erro na conversão do preço:", err)
 		}
 		quantidadeConvertidaParaInt, err := strconv.Atoi(quantidade)
-				if err != nil {
+		if err != nil {
 			log.Println("Erro na conversão da quantidade:", err)
 		}
 		models.CriaNovoProduto(nome, descricao, precoConvertidoParaFloat, quantidadeConvertidaParaInt)
 	}
+	http.Redirect(w, r, "/", 301)
+}
+
+func Delete(w http.ResponseWriter, r *http.Request) {
+	idDoProduto := r.URL.Query().Get("id")
+	models.DeletaProduto(idDoProduto)
 	http.Redirect(w, r, "/", 301)
 }
